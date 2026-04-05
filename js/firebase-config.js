@@ -11,13 +11,13 @@ import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-s
 import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBVmAkFza0XNQwhHx-G1choDAmU5-xSy5U",
-  authDomain: "unscripted-e51fe.firebaseapp.com",
-  projectId: "unscripted-e51fe",
-  storageBucket: "unscripted-e51fe.firebasestorage.app",
-  messagingSenderId: "91061667286",
-  appId: "1:91061667286:web:027616b32497c7cff4d077",
-  measurementId: "G-G92R9992PR"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);

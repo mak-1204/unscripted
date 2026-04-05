@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events — Unscripted NITT</title>
+  <meta name="description" content="Upcoming and past events from Unscripted, the public speaking club of NIT Trichy." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="../icons/logo.png" type="image/png" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" href="../index.html"><img src="../icons/logo.png" alt="Unscripted NITT" /></a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html#about">About</a>
+    <a href="events.html" style="color:var(--orange);">Events</a>
+    <a href="members.html">Members</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="videos.html">Speeches</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-login" onclick="window.location.href='login.html'">Member Login</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <span class="section-tag" style="position:relative;z-index:1;">Events</span>
+  <h1>What's Happening</h1>
+  <p>Upcoming meets, workshops, and competitions — all in one place</p>
+</div>
+
+<div class="page-content">
+  <!-- FILTER -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterEvents('all', this)">All Events</button>
+    <button class="filter-btn" onclick="filterEvents('upcoming', this)">🗓️ Upcoming</button>
+    <button class="filter-btn" onclick="filterEvents('past', this)">✓ Past</button>
+  </div>
+  <div class="events-preview-grid" id="eventsGrid">
+    <div class="event-skeleton"></div>
+    <div class="event-skeleton"></div>
+    <div class="event-skeleton"></div>
+    <div class="event-skeleton"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="../icons/logo.png" alt="Unscripted" /></div>
+        <p class="footer-tagline">Official public speaking club of NIT Trichy.</p>
+      </div>
+      <div class="footer-nav"><h4>Pages</h4><ul>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Unscripted, NIT Trichy.</p>
+      <p class="footer-love">Made with <span>♥</span> in Trichy</p>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+import { db } from '../js/firebase-config.js';
+import { collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+let allEvents = [];
+
+async function loadEvents() {
+  const grid = document.getElementById('eventsGrid');
+  try {
+    const q = query(collection(db,'events'), orderBy('date','desc'));
+    const snap = await getDocs(q);
+    allEvents = [];
+    snap.forEach(doc => allEvents.push({id:doc.id,...doc.data()}));
+    if (allEvents.length === 0) {
+      grid.innerHTML = '<p style="color:var(--mid);text-align:center;grid-column:1/-1;padding:3rem;">No events yet. Check back soon!</p>';
+      return;
+    }
+    renderEvents(allEvents);
+  } catch(e) {
+    grid.innerHTML = '<p style="color:var(--mid);text-align:center;grid-column:1/-1;padding:3rem;">Could not load events.</p>';
+  }
+}
+
+function renderEvents(events) {
+  const grid = document.getElementById('eventsGrid');
+  grid.innerHTML = events.map(e => {
+    const dateStr = e.date?.toDate ? e.date.toDate().toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'long',year:'numeric'}) : (e.date||'');
+    const isUpcoming = e.type === 'upcoming';
+    return `<div class="event-card fade-up visible">
+      <div class="event-date">${dateStr}</div>
+      <div class="event-title">${e.title||'Untitled'}</div>
+      <div class="event-desc">${e.description||''}</div>
+      ${e.location ? `<div style="color:var(--mid);font-size:0.82rem;margin-top:0.75rem;">📍 ${e.location}</div>` : ''}
+      <span class="event-badge ${isUpcoming?'badge-upcoming':'badge-past'}">${isUpcoming?'🗓️ Upcoming':'✓ Past Event'}</span>
+    </div>`;
+  }).join('');
+}
+
+window.filterEvents = function(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  if (type === 'all') renderEvents(allEvents);
+  else renderEvents(allEvents.filter(e=>e.type===type));
+};
+
+loadEvents();
+</script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

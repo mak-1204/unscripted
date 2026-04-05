@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Unscripted NITT</title>
+  <meta name="description" content="Photo gallery from Unscripted, the public speaking club of NIT Trichy. Moments worth remembering." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="../icons/logo.png" type="image/png" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" href="../index.html"><img src="../icons/logo.png" alt="Unscripted NITT" /></a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html#about">About</a>
+    <a href="events.html">Events</a>
+    <a href="members.html">Members</a>
+    <a href="gallery.html" style="color:var(--orange);">Gallery</a>
+    <a href="videos.html">Speeches</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-login" onclick="window.location.href='login.html'">Member Login</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <span class="section-tag" style="position:relative;z-index:1;">Photography</span>
+  <h1>Our Photo Gallery</h1>
+  <p>Capturing every speech, laugh, and milestone of the Unscripted journey</p>
+</div>
+
+<div class="page-content">
+  <div class="gallery-mosaic" id="galleryGrid">
+    <div class="gallery-placeholder">📸 Loading moments...</div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="../icons/logo.png" alt="Unscripted" /></div>
+        <p class="footer-tagline">Official public speaking club of NIT Trichy.</p>
+      </div>
+      <div class="footer-nav"><h4>Pages</h4><ul>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Unscripted, NIT Trichy.</p>
+      <p class="footer-love">Made with <span>♥</span> in Trichy</p>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+import { db } from '../js/firebase-config.js';
+import { collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+async function loadGallery() {
+  const grid = document.getElementById('galleryGrid');
+  try {
+    const q = query(collection(db,'gallery'), orderBy('date','desc'));
+    const snap = await getDocs(q);
+    grid.innerHTML = '';
+    if (snap.empty) { grid.innerHTML = '<div class="gallery-placeholder">📸 No photos yet. Check back soon!</div>'; return; }
+    snap.forEach(doc => {
+      const p = doc.data();
+      const img = document.createElement('img');
+      img.src = p.url;
+      img.alt = p.caption || 'Unscripted moment';
+      img.loading = 'lazy';
+      img.title = p.caption || '';
+      img.onclick = () => openLightbox(p.url, p.caption);
+      grid.appendChild(img);
+    });
+  } catch(e) {
+    grid.innerHTML = '<div class="gallery-placeholder">📸 Gallery could not load.</div>';
+  }
+}
+
+function openLightbox(src, caption) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxImg').alt = caption || '';
+  document.getElementById('lightbox').classList.add('open');
+}
+window.closeLightbox = () => document.getElementById('lightbox').classList.remove('open');
+
+loadGallery();
+</script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

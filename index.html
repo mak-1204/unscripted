@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unscripted — Public Speaking Club · NIT Trichy</title>
+  <meta name="description"
+    content="Unscripted is the official public speaking and Toastmasters club of NIT Trichy. Join us to speak, lead, and inspire." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#FF5722" />
+  <link rel="icon" href="icons/logo.png" type="image/png" />
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <a class="nav-logo" href="index.html">
+      <img src="icons/logo.png" alt="Unscripted NITT Logo" />
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="pages/events.html">Events</a>
+      <a href="pages/members.html">Members</a>
+      <a href="pages/gallery.html">Gallery</a>
+      <a href="pages/videos.html">Speeches</a>
+      <a href="pages/contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-login" onclick="window.location.href='pages/login.html'">Member Login</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="icons/logo.png" class="hero-watermark" alt="" />
+      <div class="hero-blob blob1"></div>
+      <div class="hero-blob blob2"></div>
+      <div class="hero-blob blob3"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Official Public Speaking Club &nbsp;·&nbsp; NIT Trichy</p>
+      <h1 class="hero-title">
+        <span class="line1">Speak.</span>
+        <span class="line2">Lead.</span>
+        <span class="line3">Inspire.</span>
+      </h1>
+      <p class="hero-sub">Where ideas find their voice and every engineer discovers the speaker within.</p>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="window.location.href='pages/login.html'">Member Portal →</button>
+        <button class="btn-ghost" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Explore
+          ↓</button>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">scroll</div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num" data-target="60">0</span><span class="plus">+</span><span class="stat-label">Members</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num" data-target="4">0</span><span class="plus">+</span><span class="stat-label">Pathways</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num" data-target="50">0</span><span class="plus">+</span><span class="stat-label">Meets Hosted</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num" data-target="3">0</span><span class="plus">+</span><span class="stat-label">Years Running</span></div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-inner two-col">
+      <div class="col-text fade-up">
+        <span class="section-tag">About Us</span>
+        <h2>We Turn <em>Nerves</em> Into Power</h2>
+        <p>Unscripted is NIT Trichy's official public speaking club — a Toastmasters-inspired community where engineers
+          discover their voice. We believe every great idea deserves a confident speaker.</p>
+        <p>Through structured speech pathways, mentor-led guidance, and a community that cheers you on at every step, we
+          transform hesitation into confidence and whispers into keynotes.</p>
+        <a href="pages/members.html" class="inline-link">Meet the team →</a>
+      </div>
+      <div class="col-visual fade-up">
+        <div class="about-card card1">
+          <div class="card-icon">🎤</div>
+          <div class="card-label">Speech Pathways</div>
+        </div>
+        <div class="about-card card2">
+          <div class="card-icon">🏆</div>
+          <div class="card-label">Leaderboard</div>
+        </div>
+        <div class="about-card card3">
+          <div class="card-icon">🤝</div>
+          <div class="card-label">Mentorship</div>
+        </div>
+        <div class="about-card card4">
+          <div class="card-icon">📸</div>
+          <div class="card-label">Community</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATHWAYS PREVIEW -->
+  <section class="section section-dark">
+    <div class="section-inner">
+      <span class="section-tag light">Speech Pathways</span>
+      <h2 class="text-center">Your Journey, Your Pace</h2>
+      <div class="pathways-grid">
+        <div class="pathway-card fade-up">
+          <div class="pathway-num">01</div>
+          <h3>Level 1 · Foundation</h3>
+          <p>Master the basics — structure, delivery, eye contact, and confidence. Begin your journey.</p>
+          <span class="pathway-tag">Beginner</span>
+        </div>
+        <div class="pathway-card fade-up" style="transition-delay:0.1s">
+          <div class="pathway-num">02</div>
+          <h3>Level 2 · Proficiency</h3>
+          <p>Dive deeper — persuasion, storytelling, vocal variety, and audience mastery.</p>
+          <span class="pathway-tag">Intermediate</span>
+        </div>
+        <div class="pathway-card fade-up" style="transition-delay:0.2s">
+          <div class="pathway-num">03</div>
+          <h3>Level 3 · Keynote</h3>
+          <p>Command the room — signature talks, TED-style delivery, and leadership narratives.</p>
+          <span class="pathway-tag">Advanced</span>
+        </div>
+        <div class="pathway-card fade-up" style="transition-delay:0.3s">
+          <div class="pathway-num">04</div>
+          <h3>Level 3 · Humorous</h3>
+          <p>Make them laugh — timing, wit, comedic structure, and the art of the punchline.</p>
+          <span class="pathway-tag">Advanced</span>
+        </div>
+      </div>
+      <div class="text-center mt-2">
+        <button class="btn-primary" onclick="window.location.href='pages/login.html'">Access Materials →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING EVENTS PREVIEW -->
+  <section class="section" id="events-preview">
+    <div class="section-inner">
+      <span class="section-tag">Events</span>
+      <h2>What's Happening</h2>
+      <div id="events-preview-container" class="events-preview-grid">
+        <div class="event-skeleton"></div>
+        <div class="event-skeleton"></div>
+        <div class="event-skeleton"></div>
+      </div>
+      <div class="text-center mt-2">
+        <a href="pages/events.html" class="inline-link">See all events →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY PREVIEW -->
+  <section class="section section-cream" id="gallery-preview">
+    <div class="section-inner">
+      <span class="section-tag">Gallery</span>
+      <h2>Moments Worth Remembering</h2>
+      <div class="gallery-mosaic" id="galleryPreview">
+        <div class="gallery-placeholder">📸 Loading moments...</div>
+      </div>
+      <div class="text-center mt-2">
+        <a href="pages/gallery.html" class="inline-link">View full gallery →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL / CONTACT STRIP -->
+  <section class="section section-dark">
+    <div class="section-inner text-center">
+      <span class="section-tag light">Stay Connected</span>
+      <h2>Find Us Online</h2>
+      <div class="socials-row">
+        <a href="https://www.instagram.com/unscripted_nitt" target="_blank" rel="noopener" class="social-card">
+          <span class="social-icon">📷</span>
+          <span class="social-name">Instagram</span>
+          <span class="social-handle">@unscripted_nitt</span>
+        </a>
+        <a href="https://www.linkedin.com/company/unscripted-nitt/" target="_blank" rel="noopener" class="social-card">
+          <span class="social-icon">💼</span>
+          <span class="social-name">LinkedIn</span>
+          <span class="social-handle">Unscripted NITT</span>
+        </a>
+        <a href="https://www.youtube.com/@UnscriptedNITTrichy" target="_blank" rel="noopener" class="social-card">
+          <span class="social-icon">▶️</span>
+          <span class="social-name">YouTube</span>
+          <span class="social-handle">@UnscriptedNITTrichy</span>
+        </a>
+        <a href="https://chat.whatsapp.com/YOUR_WHATSAPP_LINK" target="_blank" rel="noopener"
+          class="social-card whatsapp">
+          <span class="social-icon">💬</span>
+          <span class="social-name">WhatsApp</span>
+          <span class="social-handle">Unscripted × NITT</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="icons/logo.png" alt="Unscripted" />
+          </div>
+          <p class="footer-tagline">Official public speaking club of NIT Trichy — building confident communicators since
+            2022.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="pages/events.html">Events</a></li>
+            <li><a href="pages/gallery.html">Gallery</a></li>
+            <li><a href="pages/members.html">Members</a></li>
+            <li><a href="pages/videos.html">Speech Videos</a></li>
+            <li><a href="pages/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav">
+          <h4>Members</h4>
+          <ul>
+            <li><a href="pages/login.html">Login</a></li>
+            <li><a href="pages/dashboard.html">Dashboard</a></li>
+            <li><a href="pages/admin.html" style="color:var(--orange); font-weight:700;">Admin Login</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav">
+          <h4>Social</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/unscripted_nitt" target="_blank">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/unscripted-nitt/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://www.youtube.com/@UnscriptedNITTrichy" target="_blank">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Unscripted, NIT Trichy. All rights reserved.</p>
+        <p class="footer-love">Made with <span>♥</span> in Trichy</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
+  </div>
+
+  <!-- Firebase & Scripts -->
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/public-home.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+
+</html>

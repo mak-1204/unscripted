@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & Social — Unscripted NITT</title>
+  <meta name="description" content="Get in touch with Unscripted NITT. Find us on Instagram, LinkedIn, WhatsApp and more." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="../icons/logo.png" type="image/png" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" href="../index.html"><img src="../icons/logo.png" alt="Unscripted NITT" /></a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html#about">About</a>
+    <a href="events.html">Events</a>
+    <a href="members.html">Members</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="videos.html">Speeches</a>
+    <a href="contact.html" style="color:var(--orange);">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-login" onclick="window.location.href='login.html'">Member Login</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <span class="section-tag" style="position:relative;z-index:1;">Stay Connected</span>
+  <h1>Find Us Online</h1>
+  <p>Follow our journey, join our community, and say hello</p>
+</div>
+
+<div class="page-content">
+  <div class="contact-grid">
+    <!-- LEFT: SOCIAL LINKS -->
+    <div class="contact-info">
+      <h3>Connect With Us</h3>
+      <p>We're active across multiple platforms — follow along for event updates, speech highlights, and behind-the-scenes from Unscripted NIT Trichy.</p>
+
+      <div class="contact-social-links">
+        <a href="https://www.instagram.com/unscripted_nitt" target="_blank" rel="noopener" class="contact-social-item">
+          <span class="soc-icon">📷</span>
+          <div>
+            <div class="soc-name">Instagram</div>
+            <div class="soc-handle">@unscripted_nitt</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/company/unscripted-nitt/" target="_blank" rel="noopener" class="contact-social-item">
+          <span class="soc-icon">💼</span>
+          <div>
+            <div class="soc-name">LinkedIn</div>
+            <div class="soc-handle">Unscripted NITT</div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/@UnscriptedNITTrichy" target="_blank" rel="noopener" class="contact-social-item">
+          <span class="soc-icon">▶️</span>
+          <div>
+            <div class="soc-name">YouTube</div>
+            <div class="soc-handle">@UnscriptedNITTrichy</div>
+          </div>
+        </a>
+        <a href="mailto:unscripted@nitt.edu" class="contact-social-item">
+          <span class="soc-icon">📧</span>
+          <div>
+            <div class="soc-name">Email</div>
+            <div class="soc-handle">unscripted@nitt.edu</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- WHATSAPP BANNER -->
+      <div class="whatsapp-banner">
+        <h3>💬 Join Our Community</h3>
+        <p>Connect with Unscripted × NITT on WhatsApp — updates, events, and public speaking tips straight to your phone.</p>
+        <button class="btn-whatsapp" onclick="window.open('https://chat.whatsapp.com/YOUR_WHATSAPP_LINK','_blank')">
+          Join WhatsApp Community →
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT: CONTACT FORM -->
+    <div class="contact-form-wrap">
+      <h3>Send Us a Message</h3>
+      <div class="form-group">
+        <label for="cf-name">Your Name</label>
+        <input type="text" id="cf-name" placeholder="Eg. Ravi Kumar" required />
+      </div>
+      <div class="form-group">
+        <label for="cf-email">Email</label>
+        <input type="email" id="cf-email" placeholder="your@email.com" required />
+      </div>
+      <div class="form-group">
+        <label for="cf-subject">Subject</label>
+        <input type="text" id="cf-subject" placeholder="I'd like to join / I have a question..." />
+      </div>
+      <div class="form-group">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" placeholder="Write your message here..."></textarea>
+      </div>
+      <button class="btn-primary" id="sendBtn" onclick="sendMessage()" style="width:100%;border-radius:100px;">Send Message →</button>
+      <div class="form-success" id="formSuccess">✓ Message sent! We'll get back to you soon.</div>
+      <div class="form-error" id="formError">Something went wrong. Please try again.</div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="../icons/logo.png" alt="Unscripted" /></div>
+        <p class="footer-tagline">Official public speaking club of NIT Trichy.</p>
+      </div>
+      <div class="footer-nav"><h4>Pages</h4><ul>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Unscripted, NIT Trichy.</p>
+      <p class="footer-love">Made with <span>♥</span> in Trichy</p>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+import { db } from '../js/firebase-config.js';
+import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+window.sendMessage = async function() {
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const subject = document.getElementById('cf-subject').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+  const btn = document.getElementById('sendBtn');
+  const success = document.getElementById('formSuccess');
+  const error = document.getElementById('formError');
+  success.style.display = 'none'; error.style.display = 'none';
+
+  if (!name || !email || !message) { error.textContent = 'Please fill in name, email, and message.'; error.style.display = 'block'; return; }
+
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  try {
+    await addDoc(collection(db,'messages'), { name, email, subject, message, timestamp: serverTimestamp() });
+    success.style.display = 'block';
+    document.getElementById('cf-name').value = '';
+    document.getElementById('cf-email').value = '';
+    document.getElementById('cf-subject').value = '';
+    document.getElementById('cf-message').value = '';
+  } catch(e) {
+    error.textContent = 'Could not send message. Please email us directly.';
+    error.style.display = 'block';
+  } finally {
+    btn.textContent = 'Send Message →'; btn.disabled = false;
+  }
+};
+</script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

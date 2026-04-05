@@ -161,6 +161,22 @@ h2 em { color: var(--orange); font-style: normal; }
 
 /* ===== PATHWAYS ===== */
 .pathways-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 3rem; }
+.socials-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.social-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem 1.5rem; border-radius: 20px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-decoration: none; color: white; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
+.social-icon { width: 60px; height: 60px; background: rgba(255,255,255,0.06); border-radius: 16px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
+.social-icon svg { width: 30px; height: 30px; }
+
+.social-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-color: transparent; }
+.social-card:hover .social-icon { transform: scale(1.1); background: rgba(255,255,255,0.2); }
+.social-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; }
+.social-card p { opacity: 0.6; font-size: 0.85rem; }
+
+/* Brand Specific Glows */
+.social-card.ig:hover { background: linear-gradient(45deg, #f09433, #dc2743, #cc2366, #bc1888); }
+.social-card.li:hover { background: #0077b5; }
+.social-card.yt:hover { background: #ff0000; }
+.social-card.wa:hover { background: #25d366; }
+
 .pathway-card { 
   background: rgba(255,255,255,0.04); 
   border: 1px solid rgba(255,255,255,0.08); 
